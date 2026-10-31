@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Play Battleship against an AI opponent in your browser." />
+    <title>Battleship</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <h1 class="logo">⚓ Battleship</h1>
+        <div class="controls">
+          <label class="select">
+            <span>AI</span>
+            <select id="difficulty" aria-label="AI difficulty">
+              <option value="easy">Easy</option>
+              <option value="normal" selected>Normal</option>
+              <option value="hard">Hard</option>
+            </select>
+          </label>
+          <button id="results-btn" class="btn" type="button" hidden>🏁 Results</button>
+          <button id="help-btn" class="icon-btn" type="button" title="How to play" aria-label="How to play">?</button>
+          <button id="sound-btn" class="icon-btn" type="button" aria-pressed="true" title="Toggle sound">🔊</button>
+          <button id="new-game" class="btn primary" type="button">New Game</button>
+        </div>
+      </header>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <section id="placement" class="placement">
+        <div id="ship-queue" class="ship-queue" aria-label="Ships to place"></div>
+        <div class="placement-actions">
+          <button id="rotate" class="btn" type="button">↻ Rotate <kbd>R</kbd></button>
+          <button id="randomize" class="btn" type="button">🎲 Randomize</button>
+          <button id="clear" class="btn" type="button">Clear</button>
+          <button id="start" class="btn primary" type="button" disabled>Start Battle</button>
+        </div>
+      </section>
+
+      <main class="boards">
+        <section class="board-wrap" id="player-wrap">
+          <h2>Your Fleet</h2>
+          <div id="player-board" class="board" role="grid" aria-label="Your board"></div>
+          <ul id="player-fleet" class="fleet"></ul>
+        </section>
+        <section class="board-wrap" id="enemy-wrap">
+          <h2>Enemy Waters</h2>
+          <div id="enemy-board" class="board" role="grid" aria-label="Enemy board"></div>
+          <ul id="enemy-fleet" class="fleet"></ul>
+        </section>
+      </main>
+
+      <section class="log-wrap">
+        <h2>Battle Log</h2>
+        <ol id="log" class="log"></ol>
+      </section>
+
+      <footer class="footer">
+        Built with TypeScript, <a href="https://vite.dev" target="_blank" rel="noopener">Vite</a>,
+        <a href="https://github.com/catdad/canvas-confetti" target="_blank" rel="noopener">canvas-confetti</a> and
+        <a href="https://fonts.google.com/specimen/Black+Ops+One" target="_blank" rel="noopener">Black Ops One</a>.
+      </footer>
+    </div>
+
+    <div id="overlay" class="overlay" hidden>
+      <div class="overlay-card" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+        <div id="overlay-art" class="overlay-art"></div>
+        <h2 id="overlay-title" class="overlay-title"></h2>
+        <p id="overlay-sub" class="overlay-sub"></p>
+        <dl id="overlay-stats" class="overlay-stats"></dl>
+        <div class="overlay-actions">
+          <button id="view-board" class="btn big" type="button">👁 View Board</button>
+          <button id="play-again" class="btn primary big" type="button">New Game</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

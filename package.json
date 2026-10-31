@@ -1,0 +1,20 @@
+{
+  "name": "battleship",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "^1.6.4",
+    "typescript": "^5.6.3",
+    "vite": "^7.3.7"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.3"
+  }
+}
