@@ -18,6 +18,9 @@ After initial play there was one further prompt:
 
 I want to run some independent tests to check its claim in response:
 
-    Clumping happens almost by chance—random placement with touching allowed causes ships to end up adjacent about 90% of the time. I’ll update the placement logic to enforce a one-square buffer around every ship.
+    Clumping happens almost by chance—random placement with touching 
+    allowed causes ships to end up adjacent about 90% of the time. I’ll
+    update the placement logic to enforce a one-square buffer around 
+    every ship.
 
 The change is suboptimal from a randomness point of view, but probably more human.
